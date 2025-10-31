@@ -34,8 +34,8 @@ public partial class ServiceAddressEditWindow : Window
         ApartmentsTextBox.Text = _serviceAddress.Apartments.ToString();
         HouseAreaTextBox.Text = _serviceAddress.HouseArea.ToString();
         YardAreaTextBox.Text = _serviceAddress.YardArea.ToString();
-        MonthlyRateJanitorTextBox.Text = _serviceAddress.MonthlyRateJanitor.ToString();
-        MonthlyRateCleanerTextBox.Text = _serviceAddress.MonthlyRateCleaner.ToString();
+        MonthlyRateJanitorTextBox.Text = _serviceAddress.JanitorRate.ToString();
+        MonthlyRateCleanerTextBox.Text = _serviceAddress.CleanerRate.ToString();
         ConstructionYearTextBox.Text = _serviceAddress.ConstructionYear.ToString();
 
         ObjectTypeComboBox.Text = _serviceAddress.ObjectType ?? "Многоквартирный дом";
@@ -59,8 +59,8 @@ public partial class ServiceAddressEditWindow : Window
             _serviceAddress.Apartments = int.Parse(ApartmentsTextBox.Text);
             _serviceAddress.HouseArea = decimal.Parse(HouseAreaTextBox.Text);
             _serviceAddress.YardArea = decimal.Parse(YardAreaTextBox.Text);
-            _serviceAddress.MonthlyRateJanitor = decimal.Parse(MonthlyRateJanitorTextBox.Text);
-            _serviceAddress.MonthlyRateCleaner = decimal.Parse(MonthlyRateCleanerTextBox.Text);
+            _serviceAddress.JanitorRate = decimal.Parse(MonthlyRateJanitorTextBox.Text);
+            _serviceAddress.CleanerRate = decimal.Parse(MonthlyRateCleanerTextBox.Text);
             _serviceAddress.ConstructionYear = int.Parse(ConstructionYearTextBox.Text);
 
             _serviceAddress.ObjectType = ObjectTypeComboBox.Text;

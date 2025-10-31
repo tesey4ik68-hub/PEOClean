@@ -22,6 +22,9 @@ namespace PEOcleanWPFApp.Models
 
         public bool HasPhoto { get; set; } = false;
 
+        // Добавленное свойство для проверки отсутствия
+        public bool IsAbsent => Status != AbsenceType.Present;
+
         // Navigation properties
         public virtual Employee Employee { get; set; } = null!;
         public virtual Employee? ReplacementEmployee { get; set; }

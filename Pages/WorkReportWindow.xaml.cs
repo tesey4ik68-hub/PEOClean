@@ -25,6 +25,24 @@ public partial class WorkReportWindow : Window, INotifyPropertyChanged
     public ObservableCollection<HouseSelectionItem> AvailableHouses { get; set; }
     public ObservableCollection<HouseWorkItem> SelectedHouses { get; set; }
     public ObservableCollection<WorkTypeSelectionItem> WorkTypes { get; set; }
+    public ObservableCollection<Employee> Employees { get; set; } // Добавим список сотрудников
+
+    // Свойство для привязки выбранного сотрудника
+    public Employee? SelectedEmployee
+    {
+        get => _selectedEmployee;
+        set
+        {
+            _selectedEmployee = value;
+            OnPropertyChanged(nameof(SelectedEmployee));
+            OnPropertyChanged(nameof(EmployeeInfo));
+        }
+    }
+
+    // Свойство для управления доступностью выбора сотрудника
+    public bool IsEmployeeSelectionEnabled => true;
+
+    public event PropertyChangedEventHandler? PropertyChanged;
 
     public WorkReportWindow(Employee employee, DateTime date)
     {
@@ -36,8 +54,10 @@ public partial class WorkReportWindow : Window, INotifyPropertyChanged
         AvailableHouses = new ObservableCollection<HouseSelectionItem>();
         SelectedHouses = new ObservableCollection<HouseWorkItem>();
         WorkTypes = new ObservableCollection<WorkTypeSelectionItem>();
+        Employees = new ObservableCollection<Employee>(); // Инициализируем список сотрудников
 
         DataContext = this;
+        LoadEmployees(); // Загружаем список сотрудников
         LoadData();
         OnPropertyChanged(nameof(WindowTitle));
         OnPropertyChanged(nameof(EmployeeInfo));
@@ -52,9 +72,27 @@ public partial class WorkReportWindow : Window, INotifyPropertyChanged
         AvailableHouses = new ObservableCollection<HouseSelectionItem>();
         SelectedHouses = new ObservableCollection<HouseWorkItem>();
         WorkTypes = new ObservableCollection<WorkTypeSelectionItem>();
+        Employees = new ObservableCollection<Employee>(); // Инициализируем список сотрудников
 
         DataContext = this;
+        LoadEmployees(); // Загружаем список сотрудников
         LoadData();
+    }
+
+    private void LoadEmployees()
+    {
+        Employees.Clear();
+        var employees = _context.Employees.OrderBy(e => e.FullName).ToList();
+        foreach (var employee in employees)
+        {
+            Employees.Add(employee);
+        }
+        
+        // Если сотрудник еще не выбран, но передан в конструкторе, выбираем его
+        if (_selectedEmployee != null && !Employees.Contains(_selectedEmployee))
+        {
+            Employees.Add(_selectedEmployee);
+        }
     }
 
     private void LoadData()
@@ -64,6 +102,17 @@ public partial class WorkReportWindow : Window, INotifyPropertyChanged
 
         // Load selected houses with work details
         LoadSelectedHouses();
+    }
+
+    // Обработчик изменения выбранного сотрудника
+    private void OnEmployeeSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (EmployeeComboBox.SelectedItem is Employee selectedEmployee)
+        {
+            _selectedEmployee = selectedEmployee;
+            OnPropertyChanged(nameof(EmployeeInfo));
+            LoadData(); // Перезагружаем данные для нового сотрудника
+        }
     }
 
     private void LoadSelectedHouses()
@@ -140,6 +189,15 @@ public partial class WorkReportWindow : Window, INotifyPropertyChanged
                 DisplayName = isAssigned ? $"{house.Address} (закреплён)" : $"{house.Address} (не закреплён)",
                 TextColor = isAssigned ? Brushes.Black : Brushes.Gray
             });
+        }
+        
+        // Restore selection state for houses that were already selected
+        foreach (var houseItem in AvailableHouses)
+        {
+            if (SelectedHouses.Any(sh => sh.ServiceAddress.Id == houseItem.ServiceAddress.Id))
+            {
+                houseItem.IsSelected = true;
+            }
         }
     }
 
@@ -467,8 +525,6 @@ public partial class WorkReportWindow : Window, INotifyPropertyChanged
         // TODO: Implement adding temporary house functionality
         MessageBox.Show("Функция добавления временного дома пока не реализована.");
     }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
 
     internal virtual void OnPropertyChanged(string propertyName)
     {

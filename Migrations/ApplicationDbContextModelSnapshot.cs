@@ -208,6 +208,9 @@ namespace PEOcleanWPFApp.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("TEXT");
 
+                    b.Property<decimal>("CleanerRate")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("ConstructionYear")
                         .HasColumnType("INTEGER");
 
@@ -225,10 +228,7 @@ namespace PEOcleanWPFApp.Migrations
                     b.Property<decimal>("HouseArea")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("MonthlyRateCleaner")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("MonthlyRateJanitor")
+                    b.Property<decimal>("JanitorRate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("ObjectType")
@@ -250,6 +250,9 @@ namespace PEOcleanWPFApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int?>("AttendanceRecordId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Comment")
                         .IsRequired()
                         .HasMaxLength(1000)
@@ -264,6 +267,9 @@ namespace PEOcleanWPFApp.Migrations
                     b.Property<bool>("IsCompleted")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("IsConfirmed")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("PhotoPath")
                         .HasColumnType("TEXT");
 
@@ -274,6 +280,8 @@ namespace PEOcleanWPFApp.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AttendanceRecordId");
 
                     b.HasIndex("EmployeeId");
 
@@ -404,6 +412,10 @@ namespace PEOcleanWPFApp.Migrations
 
             modelBuilder.Entity("PEOcleanWPFApp.Models.WorkReport", b =>
                 {
+                    b.HasOne("PEOcleanWPFApp.Models.AttendanceRecord", "AttendanceRecord")
+                        .WithMany()
+                        .HasForeignKey("AttendanceRecordId");
+
                     b.HasOne("PEOcleanWPFApp.Models.Employee", "Employee")
                         .WithMany("WorkReports")
                         .HasForeignKey("EmployeeId")
@@ -421,6 +433,8 @@ namespace PEOcleanWPFApp.Migrations
                         .HasForeignKey("WorkTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AttendanceRecord");
 
                     b.Navigation("Employee");
 
