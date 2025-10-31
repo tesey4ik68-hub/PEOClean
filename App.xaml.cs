@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PEOcleanWPFApp.Data;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Windows;
 
 namespace PEOcleanWPFApp;
@@ -18,10 +19,11 @@ public partial class App : Application
     {
         var services = new ServiceCollection();
 
-        // Configure DbContext
+        // Configure DbContext with database file in the application root directory
+        var dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "janitor.db");
         services.AddDbContext<ApplicationDbContext>(options =>
         {
-            options.UseSqlite("Data Source=janitor.db");
+            options.UseSqlite($"Data Source={dbPath}");
         });
 
         _serviceProvider = services.BuildServiceProvider();
@@ -31,6 +33,9 @@ public partial class App : Application
         {
             var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
             dbContext.Database.Migrate();
+            
+            // Initialize database with seed data
+            DatabaseInitializer.SeedDatabase(dbContext);
         }
     }
 
@@ -40,4 +45,3 @@ public partial class App : Application
         return app._serviceProvider.GetRequiredService<ApplicationDbContext>();
     }
 }
-

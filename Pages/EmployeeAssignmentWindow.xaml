@@ -1,0 +1,73 @@
+<Window x:Class="PEOcleanWPFApp.Pages.EmployeeAssignmentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PEOcleanWPFApp.Pages"
+        mc:Ignorable="d"
+        Title="Распределение обязанностей: сотрудники и дома" Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок -->
+        <TextBlock Grid.Row="0" Text="Распределение обязанностей: сотрудники и дома" 
+                   FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <!-- Панель фильтров -->
+        <Border Grid.Row="1" BorderBrush="LightGray" BorderThickness="1" Padding="10" Margin="0,0,0,10">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                    <TextBlock Text="Сотрудник:" VerticalAlignment="Center" Width="80"/>
+                    <ComboBox x:Name="EmployeeFilterComboBox" Width="200" Margin="5,0"/>
+                    <CheckBox x:Name="JanitorRoleCheckBox" Content="Дворник" Margin="20,0,10,0" IsChecked="True"/>
+                    <CheckBox x:Name="CleanerRoleCheckBox" Content="Уборщик" Margin="10,0,20,0" IsChecked="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Дом:" VerticalAlignment="Center" Width="80"/>
+                    <ComboBox x:Name="HouseFilterComboBox" Width="200" Margin="5,0"/>
+                    <Button x:Name="FilterButton" Content="Фильтровать" Width="100" Margin="20,0,10,0" Click="FilterButton_Click"/>
+                    <Button x:Name="ClearFilterButton" Content="Очистить" Width="100" Click="ClearFilterButton_Click"/>
+                    <Button x:Name="AddAssignmentButton" Content="➕ Назначить сотрудника на дом" 
+                            HorizontalAlignment="Right" Click="AddAssignmentButton_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+        <!-- Таблица назначений -->
+        <DataGrid Grid.Row="2" x:Name="AssignmentsDataGrid" AutoGenerateColumns="False" 
+                  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True"
+                  SelectionMode="Single" Margin="0,0,0,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Сотрудник" Binding="{Binding Employee.FullName}" Width="*"/>
+                <DataGridTextColumn Header="Роль" Binding="{Binding RoleDisplay}" Width="100"/>
+                <DataGridTextColumn Header="Дом" Binding="{Binding ServiceAddress.Address}" Width="*"/>
+                <DataGridTextColumn Header="Ставка (руб./мес)" Binding="{Binding Rate}" Width="120"/>
+                <DataGridTextColumn Header="С" Binding="{Binding StartDate, StringFormat=d}" Width="80"/>
+                <DataGridTextColumn Header="По" Binding="{Binding EndDate, StringFormat=d}" Width="80"/>
+                <DataGridCheckBoxColumn Header="Основной?" Binding="{Binding IsPrimary}" Width="80"/>
+                <DataGridTemplateColumn Header="Действия" Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="✏️" Width="30" Margin="2" Click="EditAssignmentButton_Click"/>
+                                <Button Content="🗑️" Width="30" Margin="2" Click="DeleteAssignmentButton_Click"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Кнопки управления -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="ExportButton" Content="Экспорт в Excel" Width="120" Margin="0,0,10,0" Click="ExportButton_Click"/>
+            <Button x:Name="CloseButton" Content="Закрыть" Width="100" Click="CloseButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -36,5 +36,9 @@ namespace PEOcleanWPFApp.Models
         public decimal Rate => Role == EmployeeRole.Janitor 
             ? ServiceAddress.JanitorRate 
             : ServiceAddress.CleanerRate;
+            
+        // Вычисляемое свойство для отображения роли
+        [NotMapped]
+        public string RoleDisplay => Role == EmployeeRole.Janitor ? "Дворник" : "Уборщик";
     }
 }

@@ -105,6 +105,39 @@ namespace PEOcleanWPFApp.Migrations
                     b.ToTable("Employees");
                 });
 
+            modelBuilder.Entity("PEOcleanWPFApp.Models.EmployeeAssignment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsPrimary")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ServiceAddressId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("ServiceAddressId");
+
+                    b.ToTable("EmployeeAssignments");
+                });
+
             modelBuilder.Entity("PEOcleanWPFApp.Models.EmployeeServiceAddress", b =>
                 {
                     b.Property<int>("Id")
@@ -361,6 +394,25 @@ namespace PEOcleanWPFApp.Migrations
                     b.Navigation("ServiceAddress");
                 });
 
+            modelBuilder.Entity("PEOcleanWPFApp.Models.EmployeeAssignment", b =>
+                {
+                    b.HasOne("PEOcleanWPFApp.Models.Employee", "Employee")
+                        .WithMany()
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PEOcleanWPFApp.Models.ServiceAddress", "ServiceAddress")
+                        .WithMany()
+                        .HasForeignKey("ServiceAddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("ServiceAddress");
+                });
+
             modelBuilder.Entity("PEOcleanWPFApp.Models.EmployeeServiceAddress", b =>
                 {
                     b.HasOne("PEOcleanWPFApp.Models.Employee", "Employee")
@@ -414,7 +466,8 @@ namespace PEOcleanWPFApp.Migrations
                 {
                     b.HasOne("PEOcleanWPFApp.Models.AttendanceRecord", "AttendanceRecord")
                         .WithMany()
-                        .HasForeignKey("AttendanceRecordId");
+                        .HasForeignKey("AttendanceRecordId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("PEOcleanWPFApp.Models.Employee", "Employee")
                         .WithMany("WorkReports")

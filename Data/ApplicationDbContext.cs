@@ -20,6 +20,7 @@ namespace PEOcleanWPFApp.Data
         public DbSet<AttendanceRecordServiceAddress> AttendanceRecordServiceAddresses { get; set; }
         public DbSet<WorkReport> WorkReports { get; set; }
         public DbSet<Payment> Payments { get; set; }
+        public DbSet<EmployeeAssignment> EmployeeAssignments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -82,10 +83,29 @@ namespace PEOcleanWPFApp.Data
                 .WithMany(wt => wt.WorkReports)
                 .HasForeignKey(wr => wr.WorkTypeId);
 
+            modelBuilder.Entity<WorkReport>()
+                .HasOne(wr => wr.AttendanceRecord)
+                .WithMany()
+                .HasForeignKey(wr => wr.AttendanceRecordId)
+                .OnDelete(DeleteBehavior.SetNull);
+
             modelBuilder.Entity<Payment>()
                 .HasOne(p => p.Employee)
                 .WithMany(e => e.Payments)
                 .HasForeignKey(p => p.EmployeeId);
+
+            // Configure EmployeeAssignment relationships
+            modelBuilder.Entity<EmployeeAssignment>()
+                .HasOne(ea => ea.Employee)
+                .WithMany()
+                .HasForeignKey(ea => ea.EmployeeId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<EmployeeAssignment>()
+                .HasOne(ea => ea.ServiceAddress)
+                .WithMany()
+                .HasForeignKey(ea => ea.ServiceAddressId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

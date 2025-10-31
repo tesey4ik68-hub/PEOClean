@@ -163,3 +163,7 @@ C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\PEOcleanWPFApp\obj\
 C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\PEOcleanWPFApp\obj\Debug\net9.0-windows\Pages\ServiceAddressEditWindow.baml
 C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\PEOcleanWPFApp\obj\Debug\net9.0-windows\Pages\WorkTypeEditWindow.baml
 C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\PEOcleanWPFApp\obj\Debug\net9.0-windows\PEOcleanWPFApp.sourcelink.json
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\PEOcleanWPFApp\obj\Debug\net9.0-windows\Pages\EmployeeAssignmentEditWindow.g.cs
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\PEOcleanWPFApp\obj\Debug\net9.0-windows\Pages\EmployeeAssignmentWindow.g.cs
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\PEOcleanWPFApp\obj\Debug\net9.0-windows\Pages\EmployeeAssignmentEditWindow.baml
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\PEOcleanWPFApp\obj\Debug\net9.0-windows\Pages\EmployeeAssignmentWindow.baml
