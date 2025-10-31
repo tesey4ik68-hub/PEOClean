@@ -1,0 +1,20 @@
+﻿PEOcleanWPFApp
+
+
+winexe
+C#
+.cs
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\PEOcleanWPFApp\obj\Debug\net9.0-windows\
+PEOcleanWPFApp
+none
+false
+TRACE;DEBUG;NET;NET9_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\PEOcleanWPFApp\App.xaml
+61708352207
+
+28-1806825340
+240271880213
+MainWindow.xaml;Pages\DictionaryWindow.xaml;Pages\EmployeeEditWindow.xaml;Pages\ServiceAddressEditWindow.xaml;Pages\WorkReportWindow.xaml;Pages\WorkTypeEditWindow.xaml;
+
+False
+

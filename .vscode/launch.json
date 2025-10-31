@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C#: Запустить стартап-проект",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/PEOcleanWPFApp.csproj",
+            "launchConfigurationId": "TargetFramework=;PEOcleanWPFApp"
+        },
+        {
+            "name": ".NET Core Launch (console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/bin/Debug/net9.0-windows/PEOcleanWPFApp.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": false
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}
