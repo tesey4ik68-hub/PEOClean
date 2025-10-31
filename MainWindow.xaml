@@ -1,4 +1,4 @@
-﻿<Window x:Class="PEOcleanWPFApp.MainWindow"
+<Window x:Class="PEOcleanWPFApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -139,16 +139,16 @@
                     </Border.Background>
                     <StackPanel>
                         <TextBlock Text="{Binding WeeklyAttendanceTitle}" FontSize="16" FontWeight="Bold" Margin="15" Foreground="{StaticResource TextPrimaryBrush}"/>
-                        <DataGrid x:Name="WeeklyAttendanceGrid" AutoGenerateColumns="False" Margin="10" Height="500" Background="Transparent" BorderThickness="0" Foreground="{StaticResource TextSecondaryBrush}" MouseDoubleClick="WeeklyAttendanceGrid_MouseDoubleClick" IsReadOnly="True" CanUserResizeColumns="True" CanUserSortColumns="True" CanUserAddRows="False" CanUserDeleteRows="False">
+                        <DataGrid x:Name="WeeklyAttendanceGrid" AutoGenerateColumns="False" Margin="10" Height="500" Background="Transparent" BorderThickness="0" Foreground="{StaticResource TextSecondaryBrush}" MouseDoubleClick="WeeklyAttendanceDataGrid_MouseDoubleClick" IsReadOnly="True" CanUserResizeColumns="True" CanUserSortColumns="True" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False">
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="Сотрудник" Binding="{Binding EmployeeName}" Width="150"/>
-                                <DataGridTextColumn Header="Пн" Binding="{Binding MondayStatus}" Width="40"/>
-                                <DataGridTextColumn Header="Вт" Binding="{Binding TuesdayStatus}" Width="40"/>
-                                <DataGridTextColumn Header="Ср" Binding="{Binding WednesdayStatus}" Width="40"/>
-                                <DataGridTextColumn Header="Чт" Binding="{Binding ThursdayStatus}" Width="40"/>
-                                <DataGridTextColumn Header="Пт" Binding="{Binding FridayStatus}" Width="40"/>
-                                <DataGridTextColumn Header="Сб" Binding="{Binding SaturdayStatus}" Width="40"/>
-                                <DataGridTextColumn Header="Вс" Binding="{Binding SundayStatus}" Width="40"/>
+                                <DataGridTextColumn Header="Сотрудник" Binding="{Binding EmployeeName}" Width="150" CanUserSort="True"/>
+                                <DataGridTextColumn Header="Пн" Binding="{Binding MondayStatus}" Width="40" CanUserSort="False"/>
+                                <DataGridTextColumn Header="Вт" Binding="{Binding TuesdayStatus}" Width="40" CanUserSort="False"/>
+                                <DataGridTextColumn Header="Ср" Binding="{Binding WednesdayStatus}" Width="40" CanUserSort="False"/>
+                                <DataGridTextColumn Header="Чт" Binding="{Binding ThursdayStatus}" Width="40" CanUserSort="False"/>
+                                <DataGridTextColumn Header="Пт" Binding="{Binding FridayStatus}" Width="40" CanUserSort="False"/>
+                                <DataGridTextColumn Header="Сб" Binding="{Binding SaturdayStatus}" Width="40" CanUserSort="False"/>
+                                <DataGridTextColumn Header="Вс" Binding="{Binding SundayStatus}" Width="40" CanUserSort="False"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </StackPanel>

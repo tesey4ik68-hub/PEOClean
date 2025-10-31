@@ -22,10 +22,10 @@ namespace PEOcleanWPFApp.Models
         public decimal? YardArea { get; set; } // Площадь двора
 
         [Required]
-        public decimal MonthlyRateJanitor { get; set; } // Месячная ставка дворника
+        public decimal JanitorRate { get; set; } // Месячная ставка дворника
 
         [Required]
-        public decimal MonthlyRateCleaner { get; set; } // Месячная ставка уборщицы
+        public decimal CleanerRate { get; set; } // Месячная ставка уборщицы
 
         [MaxLength(50)]
         public string ObjectType { get; set; } = "Многоквартирный дом"; // Тип объекта

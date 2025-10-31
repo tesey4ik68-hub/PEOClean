@@ -1,10 +1,11 @@
-﻿using PEOcleanWPFApp.Data;
+using PEOcleanWPFApp.Data;
 using PEOcleanWPFApp.Models;
 using PEOcleanWPFApp.Pages;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace PEOcleanWPFApp;
 
@@ -76,14 +77,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             var item = new WeeklyAttendanceItem { EmployeeName = employee.FullName };
             for (int i = 0; i < 7; i++)
             {
-                var date = startOfWeek.AddDays(i);
-                var attendance = _context.AttendanceRecords
-                    .FirstOrDefault(ar => ar.EmployeeId == employee.Id && ar.Date.Date == date.Date);
-
-                string status = attendance == null ? "-" :
-                    attendance.Status == AbsenceType.Worked ? (attendance.HasPhoto ? "✅" : "⚪") :
-                    attendance.Status == AbsenceType.NotWorked ? "❌" : "🔄";
-
+                var currentDate = startOfWeek.AddDays(i);
+                var status = GetAttendanceStatus(employee.Id, currentDate);
                 switch (i)
                 {
                     case 0: item.MondayStatus = status; break;
@@ -99,13 +94,68 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         }
     }
 
+    private string GetAttendanceStatus(int employeeId, DateTime date)
+    {
+        var attendance = _context.AttendanceRecords
+            .FirstOrDefault(a => a.EmployeeId == employeeId && a.Date.Date == date.Date);
+
+        if (attendance == null)
+            return "-";
+
+        if (attendance.IsAbsent)
+            return "❌";
+
+        var workReport = _context.WorkReports
+            .FirstOrDefault(w => w.AttendanceRecordId == attendance.Id);
+
+        if (workReport == null)
+            return "⚪";
+
+        if (workReport.IsConfirmed)
+            return !string.IsNullOrEmpty(workReport.PhotoPath) ? "✅" : "⚪";
+
+        return "🔄";
+    }
+
     private void LoadAlerts()
     {
         AlertItems.Clear();
-        // Add sample alerts - in real app, this would be calculated based on data
-        AlertItems.Add(new AlertItem { Icon = "❗", Message = "Дом Ленина, 10 — не проведена влажная уборка" });
-        AlertItems.Add(new AlertItem { Icon = "⚠️", Message = "Дом Гагарина, 5 — 3 дня без отчёта" });
-        AlertItems.Add(new AlertItem { Icon = "ℹ️", Message = "Сотрудник Иванов — 5 дней без фото" });
+
+        var currentDate = DateTime.Today;
+        var startOfWeek = currentDate.AddDays(-(int)currentDate.DayOfWeek + 1);
+
+        // Проверяем дома без отчётов за последние 3 дня
+        var housesWithoutReports = _context.ServiceAddresses
+            .Where(sa => !_context.WorkReports
+                .Any(wr => wr.ServiceAddressId == sa.Id &&
+                          wr.Date >= currentDate.AddDays(-3) &&
+                          wr.Date <= currentDate))
+            .ToList();
+
+        foreach (var house in housesWithoutReports)
+        {
+            AlertItems.Add(new AlertItem { Icon = "⚠️", Message = $"{house.Address} — 3 дня без отчёта" });
+        }
+
+        // Проверяем сотрудников без фото за последние 5 дней
+        var employeesWithoutPhotos = _context.Employees
+            .Where(e => !_context.WorkReports
+                .Any(wr => wr.EmployeeId == e.Id &&
+                          wr.Date >= currentDate.AddDays(-5) &&
+                          wr.Date <= currentDate &&
+                          !string.IsNullOrEmpty(wr.PhotoPath)))
+            .ToList();
+
+        foreach (var employee in employeesWithoutPhotos)
+        {
+            AlertItems.Add(new AlertItem { Icon = "ℹ️", Message = $"{employee.FullName} — 5 дней без фото" });
+        }
+
+        // Если нет предупреждений, добавляем информационное сообщение
+        if (!AlertItems.Any())
+        {
+            AlertItems.Add(new AlertItem { Icon = "✅", Message = "Все в порядке — нет проблемных зон" });
+        }
     }
 
     private void LoadHouseProgress()
@@ -197,7 +247,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         LoadData(); // Refresh data after closing the window
     }
 
-    private void WeeklyAttendanceGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    private void WeeklyAttendanceDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
         var dataGrid = sender as DataGrid;
         if (dataGrid?.SelectedItem is WeeklyAttendanceItem selectedItem)
@@ -205,8 +255,23 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             var employee = _context.Employees.FirstOrDefault(emp => emp.FullName == selectedItem.EmployeeName);
             if (employee != null)
             {
-                var workReportWindow = new WorkReportWindow(employee, SelectedDate);
-                workReportWindow.ShowDialog();
+                // Проверим, существует ли запись о работе для этого сотрудника в выбранную дату
+                var existingReport = _context.WorkReports
+                    .FirstOrDefault(wr => wr.EmployeeId == employee.Id && wr.Date == SelectedDate);
+
+                if (existingReport != null)
+                {
+                    // Если запись существует, открываем окно для редактирования
+                    var workReportWindow = new WorkReportWindow(employee, SelectedDate);
+                    workReportWindow.ShowDialog();
+                }
+                else
+                {
+                    // Если записи нет, открываем окно с возможностью выбора сотрудника
+                    var workReportWindow = new WorkReportWindow();
+                    workReportWindow.ShowDialog();
+                }
+                
                 LoadData(); // Refresh data after closing the window
             }
         }

@@ -17,7 +17,7 @@ public class PaymentCalculationService
     /// </summary>
     public decimal CalculateDailyRate(ServiceAddress house)
     {
-        return house.MonthlyRateJanitor / 27;
+        return house.JanitorRate / 27;
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ public class PaymentCalculationService
                 ServiceAddressId = g.Key.ServiceAddressId,
                 DailyRate = _context.ServiceAddresses
                     .Where(sa => sa.Id == g.Key.ServiceAddressId)
-                    .Select(sa => sa.MonthlyRateJanitor / 27)
+                    .Select(sa => sa.JanitorRate / 27)
                     .FirstOrDefault()
             })
             .ToList();
