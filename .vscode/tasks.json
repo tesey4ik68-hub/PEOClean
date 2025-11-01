@@ -7,7 +7,11 @@
             "type": "process",
             "args": [
                 "build",
+<<<<<<< HEAD
                 "${workspaceFolder}/PEOcleanWPFApp.csproj",
+=======
+                "${workspaceFolder}/PEOcleanWPFApp/PEOcleanWPFApp.csproj",
+>>>>>>> 2513810 (Initial commit: PEOClean application with employee assignments and weekly attendance tracking)
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +23,11 @@
             "type": "process",
             "args": [
                 "publish",
+<<<<<<< HEAD
                 "${workspaceFolder}/PEOcleanWPFApp.csproj",
+=======
+                "${workspaceFolder}/PEOcleanWPFApp/PEOcleanWPFApp.csproj",
+>>>>>>> 2513810 (Initial commit: PEOClean application with employee assignments and weekly attendance tracking)
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +41,11 @@
                 "watch",
                 "run",
                 "--project",
+<<<<<<< HEAD
                 "${workspaceFolder}/PEOcleanWPFApp.csproj"
+=======
+                "${workspaceFolder}/PEOcleanWPFApp/PEOcleanWPFApp.csproj"
+>>>>>>> 2513810 (Initial commit: PEOClean application with employee assignments and weekly attendance tracking)
             ],
             "problemMatcher": "$msCompile"
         }

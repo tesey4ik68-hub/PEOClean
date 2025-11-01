@@ -2,6 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
+<<<<<<< HEAD
             "name": "C#: Запустить стартап-проект",
             "type": "dotnet",
             "request": "launch",
@@ -14,6 +15,13 @@
             "request": "launch",
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/bin/Debug/net9.0-windows/PEOcleanWPFApp.exe",
+=======
+            "name": "Запуск WPF-приложения",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/PEOcleanWPFApp/bin/Debug/net9.0-windows/PEOcleanWPFApp.exe",
+>>>>>>> 2513810 (Initial commit: PEOClean application with employee assignments and weekly attendance tracking)
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",
