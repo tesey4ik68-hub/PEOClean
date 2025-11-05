@@ -1,0 +1,6 @@
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\CheckDbApp\obj\Debug\net9.0-windows\CheckDbApp.csproj.AssemblyReference.cache
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\CheckDbApp\obj\Debug\net9.0-windows\CheckDbApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\CheckDbApp\obj\Debug\net9.0-windows\CheckDbApp.AssemblyInfoInputs.cache
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\CheckDbApp\obj\Debug\net9.0-windows\CheckDbApp.AssemblyInfo.cs
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\CheckDbApp\obj\Debug\net9.0-windows\CheckDbApp.csproj.CoreCompileInputs.cache
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\CheckDbApp\obj\Debug\net9.0-windows\CheckDbApp.sourcelink.json
