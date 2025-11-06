@@ -7032,11 +7032,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aasolomennikov\\Desktop\\ID программ\\PEOclean\\PEOcleanWPFApp\\PEOcleanWPFApp.csproj",
+      "projectUniqueName": "c:\\Users\\aasolomennikov\\Desktop\\ID программ\\PEOclean\\PEOcleanWPFApp.csproj",
       "projectName": "PEOcleanWPFApp",
-      "projectPath": "C:\\Users\\aasolomennikov\\Desktop\\ID программ\\PEOclean\\PEOcleanWPFApp\\PEOcleanWPFApp.csproj",
+      "projectPath": "c:\\Users\\aasolomennikov\\Desktop\\ID программ\\PEOclean\\PEOcleanWPFApp.csproj",
       "packagesPath": "C:\\Users\\aasolomennikov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aasolomennikov\\Desktop\\ID программ\\PEOclean\\PEOcleanWPFApp\\obj\\",
+      "outputPath": "c:\\Users\\aasolomennikov\\Desktop\\ID программ\\PEOclean\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aasolomennikov\\AppData\\Roaming\\NuGet\\NuGet.Config"

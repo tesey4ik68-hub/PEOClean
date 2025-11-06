@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\PEOcleanWPFApp\obj\Debug\net9.0-windows\
+c:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\
 PEOcleanWPFApp
 none
 false
 TRACE;DEBUG;NET;NET9_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NET9_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\PEOcleanWPFApp\App.xaml
-81056992599
+c:\Users\aasolomennikov\Desktop\ID программ\PEOclean\App.xaml
+221171183823
 
-43645030358
+124-793866186
 240271880213
-MainWindow.xaml;Pages\DictionaryWindow.xaml;Pages\EmployeeAssignmentEditWindow.xaml;Pages\EmployeeAssignmentWindow.xaml;Pages\EmployeeEditWindow.xaml;Pages\ServiceAddressEditWindow.xaml;Pages\WorkReportWindow.xaml;Pages\WorkTypeEditWindow.xaml;
+MainWindow.xaml;Pages\DictionaryWindow.xaml;Pages\EmployeeAssignmentEditWindow.xaml;Pages\EmployeeAssignmentWindow.xaml;Pages\EmployeeEditWindow.xaml;Pages\ServiceAddressEditWindow.xaml;Pages\WorkReportWindow.xaml;Pages\WorkTypeEditWindow.xaml;PEOcleanWPFApp\App.xaml;PEOcleanWPFApp\MainWindow.xaml;PEOcleanWPFApp\Pages\AboutWindow.xaml;PEOcleanWPFApp\Pages\DictionaryWindow.xaml;PEOcleanWPFApp\Pages\EmployeeAssignmentEditWindow.xaml;PEOcleanWPFApp\Pages\EmployeeAssignmentWindow.xaml;PEOcleanWPFApp\Pages\EmployeeEditWindow.xaml;PEOcleanWPFApp\Pages\EquipmentEditWindow.xaml;PEOcleanWPFApp\Pages\EquipmentManagementWindow.xaml;PEOcleanWPFApp\Pages\EquipmentWorkEditWindow.xaml;PEOcleanWPFApp\Pages\HouseSelectionWindow.xaml;PEOcleanWPFApp\Pages\ServiceAddressEditWindow.xaml;PEOcleanWPFApp\Pages\WorkReportWindow.xaml;PEOcleanWPFApp\Pages\WorkTypeEditWindow.xaml;
 
-False
+True
 
