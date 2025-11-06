@@ -196,3 +196,9 @@ c:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-wi
 c:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\PEOcleanWPFApp.dll
 c:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\refint\PEOcleanWPFApp.dll
 c:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\PEOcleanWPFApp.pdb
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\PEOcleanWPFApp\Pages\EmployeeReportWindow.g.cs
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\PEOcleanWPFApp\Pages\EquipmentReportWindow.g.cs
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\PEOcleanWPFApp\Pages\HouseReportWindow.g.cs
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\PEOcleanWPFApp\Pages\ReportsMainWindow.g.cs
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\PEOcleanWPFApp\Pages\SummaryReportWindow.g.cs
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\PEOcleanWPFApp\Pages\WorkJournalWindow.g.cs
