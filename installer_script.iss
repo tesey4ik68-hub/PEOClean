@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Учёт дворников"
-#define MyAppVersion "1.0"
+#define MyAppVersion "1.1"
 #define MyAppPublisher "Управляющая компания"
 #define MyAppURL "https://github.com/tesey4ik68-hub/PEOClean"
 #define MyAppExeName "PEOcleanWPFApp.exe"

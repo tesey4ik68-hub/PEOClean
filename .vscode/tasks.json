@@ -20,10 +20,36 @@
             "args": [
                 "publish",
                 "${workspaceFolder}/PEOcleanWPFApp/PEOcleanWPFApp.csproj",
+                "-c",
+                "Release",
+                "-r",
+                "win-x64",
+                "--self-contained",
+                "true",
+                "-p:PublishSingleFile=false",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-installer",
+            "command": "C:\\Users\\aasolomennikov\\AppData\\Local\\Programs\\Inno Setup 6\\ISCC.exe",
+            "type": "process",
+            "args": [
+                "${workspaceFolder}/installer_script.iss"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            },
+            "problemMatcher": []
         },
         {
             "label": "watch",

@@ -204,3 +204,5 @@ C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-wi
 C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\PEOcleanWPFApp\Pages\WorkJournalWindow.g.cs
 C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\PEOcleanWPFApp\Pages\WorkJournalMainWindow.g.cs
 C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\PEOcleanWPFApp\Pages\PaymentConfirmationWindow.g.cs
+C:\Users\aasolomennikov\Desktop\ID программ\PEOclean\obj\Debug\net9.0-windows\PEOcleanWPFApp\Pages\TimesheetReportWindow.g.cs
